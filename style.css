@@ -916,17 +916,15 @@ b:not(.no-ink):hover {
   overflow: visible;
   cursor: pointer;
   min-height: 120px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
-/* Hover: slide up to invite click */
+/* Hover: glow effect without moving the element */
 .secret-pocket:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -5px 25px rgba(139, 105, 20, 0.4);
 }
 
 .secret-pocket.open:hover {
-  transform: translateY(0);
   box-shadow: none;
 }
 
@@ -947,16 +945,13 @@ b:not(.no-ink):hover {
   align-items: center;
   justify-content: center;
   box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
-  animation: tab-pulse 2s ease-in-out infinite;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
-@keyframes tab-pulse {
-  0%, 100% {
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
-  }
-  50% {
-    box-shadow: 0 -4px 25px rgba(139, 105, 20, 0.4);
-  }
+/* Highlight the tab on hover for clear click feedback */
+.secret-pocket:hover .pocket-tab {
+  box-shadow: 0 -6px 25px rgba(139, 105, 20, 0.5);
+  background: linear-gradient(180deg, #f0ddb8 0%, #dfc090 100%);
 }
 
 .pocket-tab-text {
@@ -1024,9 +1019,10 @@ b:not(.no-ink):hover {
   transform: translateX(-50%);
   font-size: 1.8rem;
   color: #3a2a1a;
-  animation: bounce-arrow 1.2s ease-in-out infinite;
-  transition: color 0.3s ease, transform 0.3s ease;
+  animation: bounce-arrow 2s ease-in-out infinite;
+  transition: color 0.3s ease;
   text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  pointer-events: none;
 }
 
 @keyframes bounce-arrow {
@@ -1034,14 +1030,13 @@ b:not(.no-ink):hover {
     transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(-12px);
+    transform: translateX(-50%) translateY(-8px);
   }
 }
 
 .secret-pocket:hover .pull-arrow {
   color: #fff;
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  animation: bounce-arrow 0.6s ease-in-out infinite;
 }
 
 /* Pull tab text */
@@ -1079,7 +1074,6 @@ b:not(.no-ink):hover {
   color: #fff;
   background: rgba(60, 40, 20, 0.7);
   letter-spacing: 0.2em;
-  transform: translateX(-50%) scale(1.05);
 }
 
 .secret-pocket:hover .pull-tab::before,
